@@ -52,6 +52,20 @@ return {
     servers = {
       -- "pyright"
     },
+    ["server-settings"] = {
+      -- example for addings schemas to yamlls
+      yamlls = { -- override table for require("lspconfig").yamlls.setup({...})
+        settings = {
+          yaml = {
+            schemas = {
+              ["http://json.schemastore.org/github-workflow"] = ".github/workflows/*.{yml,yaml}",
+              ["http://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
+              ["https://raw.githubusercontent.com/argoproj/argo-workflows/master/api/jsonschema/schema.json"] = "*.{yml,yaml}",
+            },
+          },
+        },
+      },
+    },
   },
 
   -- Configure require("lazy").setup() options

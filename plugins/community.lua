@@ -8,53 +8,76 @@ return {
   { import = "astrocommunity.editing-support.mini-splitjoin" },
   { import = "astrocommunity.completion.copilot-lua-cmp" },
   {
-	  "zbirenbaum/copilot.lua",
-	  cmd = "Copilot",
-	  event = "InsertEnter",
-	  config = function()
-	    require("copilot").setup({
-	        suggestion = {
-          auto_trigger = true,
-        },
-	    })
-	  end,
+    "copilot.lua",
+    opts = {
+      filetypes = {
+        yaml = true,
+        -- markdown = false,
+        -- help = false,
+        gitcommit = true,
+        -- gitrebase = false,
+        -- hgcommit = false,
+        -- svn = false,
+        -- cvs = false,
+        -- ["."] = false,
+      },
+	    suggestion = {
+        auto_trigger = true,
+      },
+    },
   },
+  -- Hop is an EasyMotion-like plugin allowing you to jump anywhere in a document with as few keystrokes as possible
   { import = "astrocommunity.motion.hop-nvim" },
-  {
-    'phaazon/hop.nvim',
-    branch = 'v2', -- optional but strongly recommended
-    config = function()
-      -- you can configure Hop the way you like here; see :h hop-config
-      require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
-    end
-  },
+  -- mini-bracketed is go forward/backward with square brackets
   { import = "astrocommunity.motion.mini-bracketed" },
-  { 'echasnovski/mini.bracketed', version = false },
+  -- Surround selections, stylishly
   { import = "astrocommunity.motion.nvim-surround" },
-  {
-    "kylechui/nvim-surround",
-    version = "*", -- Use for stability; omit to use `main` branch for the latest features
-    event = "VeryLazy",
-    config = function()
-        require("nvim-surround").setup({
-            -- Configuration here, or leave empty to use defaults
-        })
-    end
-  },
-  { import = "astrocommunity.motion.vim-matchup" },
-  {
-    "andymass/vim-matchup",
-    setup = function()
-      vim.g.matchup_matchparen_offscreen = { method = "popup" }
-    end,
-  },
+  -- indent-blankline is adds indentation guides to all lines (including empty lines)
   { import = "astrocommunity.indent.indent-blankline-nvim" },
   { 
-    "lukas-reineke/indent-blankline.nvim",
+
+    "indent-blankline.nvim",
 	  config = function()
       vim.opt.list = true
       vim.opt.listchars:append "space:⋅"
       vim.opt.listchars:append "eol:↴"
+      vim.opt.listchars:append "tab:▷⋅"
+
+      vim.g.indent_blankline_buftype_exclude = { "nofile", "terminal" }
+      vim.g.indent_blankline_filetype_exclude = {
+        "help",
+        "startify",
+        "aerial",
+        "alpha",
+        "dashboard",
+        "lazy",
+        "neogitstatus",
+        "NvimTree",
+        "neo-tree",
+        "Trouble",
+      }
+      vim.g.indent_blankline_context_patterns = {
+        "class",
+        "return",
+        "function",
+        "method",
+        "^if",
+        "^while",
+        "jsx_element",
+        "^for",
+        "^object",
+        "^table",
+        "block",
+        "arguments",
+        "if_statement",
+        "else_clause",
+        "jsx_element",
+        "jsx_self_closing_element",
+        "try_statement",
+        "catch_clause",
+        "import_statement",
+        "operation_type",
+      }
       require("indent_blankline").setup {
         space_char_blankline = " ",
         show_current_context = true,
@@ -62,12 +85,6 @@ return {
         show_end_of_line = true,
       }
     end,
-  },
-  {
-    "m4xshen/hardtime.nvim",
-    opts = {
-      disable_mouse = false,
-    },
   },
 }
 
