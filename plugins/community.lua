@@ -3,9 +3,13 @@ return {
   "AstroNvim/astrocommunity",
   -- example of imporing a plugin, comment out to use it or add your own
   -- available plugins can be found at https://github.com/AstroNvim/astrocommunity
+  -- color theme
   { import = "astrocommunity.colorscheme.nightfox-nvim" },
+  -- extended increment/decrement
   { import = "astrocommunity.editing-support.dial-nvim" },
+  -- split and join arguments
   { import = "astrocommunity.editing-support.mini-splitjoin" },
+  -- copilot completion
   { import = "astrocommunity.completion.copilot-lua-cmp" },
   {
     "copilot.lua",
@@ -21,7 +25,7 @@ return {
         -- cvs = false,
         -- ["."] = false,
       },
-	    suggestion = {
+      suggestion = {
         auto_trigger = true,
       },
     },
@@ -30,14 +34,13 @@ return {
   { import = "astrocommunity.motion.hop-nvim" },
   -- mini-bracketed is go forward/backward with square brackets
   { import = "astrocommunity.motion.mini-bracketed" },
-  -- Surround selections, stylishly
+  -- surround selections, stylishly
   { import = "astrocommunity.motion.nvim-surround" },
   -- indent-blankline is adds indentation guides to all lines (including empty lines)
   { import = "astrocommunity.indent.indent-blankline-nvim" },
-  { 
-
+  {
     "indent-blankline.nvim",
-	  config = function()
+    config = function()
       vim.opt.list = true
       vim.opt.listchars:append "space:⋅"
       vim.opt.listchars:append "eol:↴"
@@ -81,10 +84,16 @@ return {
       require("indent_blankline").setup {
         space_char_blankline = " ",
         show_current_context = true,
-        show_current_context_start = true,
+        -- show_current_context_start = true,
         show_end_of_line = true,
       }
     end,
   },
+  { import = "astrocommunity.editing-support.multicursors-nvim" },
+  {
+    "smoka7/multicursors.nvim",
+    dependencies = {
+      'smoka7/hydra.nvim',
+    },
+  }
 }
-
