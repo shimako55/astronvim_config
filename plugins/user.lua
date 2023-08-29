@@ -39,7 +39,18 @@ return {
       "nvim-telescope/telescope.nvim"
     }
   },
-  -- test
+  -- git signs
+  {
+    "lewis6991/gitsigns.nvim",
+    event = "BufRead",
+    config = function()
+      require("gitsigns").setup({
+        current_line_blame = true,
+      })
+    end,
+  },
+  {},
+  -- test my plugin
   {
     "shimako55/jumpref.nvim",
     event = "VimEnter",

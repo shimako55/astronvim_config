@@ -5,6 +5,7 @@ return {
   -- available plugins can be found at https://github.com/AstroNvim/astrocommunity
   -- color theme
   { import = "astrocommunity.colorscheme.nightfox-nvim" },
+  { import = "astrocommunity.colorscheme.catppuccin" },
   -- extended increment/decrement
   { import = "astrocommunity.editing-support.dial-nvim" },
   -- split and join arguments
