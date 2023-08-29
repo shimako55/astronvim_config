@@ -17,7 +17,7 @@ return {
     config = function()
       require("chatgpt").setup({
         openai_params = {
-          model = "gpt-4",
+          model = "gpt-4-0314",
           frequency_penalty = 0,
           presence_penalty = 0,
           max_tokens = 300,
@@ -38,5 +38,13 @@ return {
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope.nvim"
     }
+  },
+  -- test
+  {
+    "shimako55/jumpref.nvim",
+    event = "VimEnter",
+    config = function()
+      require('jumpref').setup()
+    end,
   },
 }
