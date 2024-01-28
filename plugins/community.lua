@@ -96,5 +96,7 @@ return {
     dependencies = {
       'smoka7/hydra.nvim',
     },
-  }
+  },
+  { import = "astrocommunity.color.vim-highlighter" },
+  { import = "astrocommunity.git.diffview-nvim" },
 }
